@@ -6,7 +6,9 @@ add_executable(MDTerminalRenderer main.c
     mdrender.h
     string_buffer.h
     styles.h
-    stylestack.h)
+    stylestack.h
+    mdrender.h
+)
 
 include(GNUInstallDirs)
 install(TARGETS MDTerminalRenderer
