@@ -1,37 +1,36 @@
-# 🚀 MDTRender - Markdown для Терминала
+![image](https://github.com/user-attachments/assets/336e8bcf-7b2f-463a-9202-d6cfb5d7dbce)
 
-MDTRender — это **легковесный и быстрый парсер Markdown**, позволяющий рендерить текст  
-в ANSI-совместимых терминалах с красивым форматированием.
+# 🚀 MDTRender - Markdown for the Terminal
 
-## 📌 Возможности
+MDTRender is a **lightweight and fast Markdown parser** that lets you render text  
+in ANSI-compatible terminals with beautiful formatting.
 
-- 🔹 **Стилизация текста**:
-  - **Жирный**, *курсивный*, __подчеркнутый__, ~~зачеркнутый~~
-  - `inline code` для выделения кода
+## 📌 Features
 
-- 🔹 **Форматирование**:
-  - Заголовки `#`, `##`, `###`
-  - Списки: `-`, `*` (маркированные), `1.`, `2.` (нумерованные)
-  - > **Цитаты** с автоматическим выравниванием
+- 🔹 **Text styling:**
+  - **Bold**, _italic_, **underline**, ~strikethrough~
+  - `inline code` highlighting
+- 🔹 **Formatting:**
+  - Headings `#`, `##`, `###`
+  - Lists: `-`, `*` (bulleted), `1.`, `2.` (numbered)
+  - > **Quotes** with automatic alignment
+- 🔹 **Code blocks:**
+  - ```sh``` and ```c``` with automatic line alignment
+  - Framed for better readability
+- 🔹 **Full ANSI color support** for the best terminal display
 
-- 🔹 **Кодовые блоки**:
-  - ```sh``` и ```c``` с автоматическим выравниванием строк
-  - Обрамляются рамками для лучшей читаемости
-
-- 🔹 **Полная поддержка ANSI-цветов** для лучшего отображения в терминале
-
-## 🔥 Демонстрация
+## 🔥 Demo
 
 ```c
 #include "mdrender.h"
 int main() {
-    const char *md = "# Привет, MDRender!\n\n**Работает!**";
+    const char _md = "# Hello, MDRender!\n\n_*It works!**";
     printf("%s\n", get_terminal_markdown_string(md));
     return 0;
 }
 ```
 
-## ⚡ Установка
+## ⚡ Installation
 
 ```sh
 git clone https://github.com/username/mdrender.git
@@ -39,6 +38,6 @@ cd mdrender
 make && sudo make install
 ```
 
-## 📜 Лицензия
+## 📜 License
 
-Этот проект распространяется под лицензией MIT. Используй на здоровье! 🖖
+This project is distributed under the MIT license. Use it freely! 🖖
