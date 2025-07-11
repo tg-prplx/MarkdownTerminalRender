@@ -1,6 +1,8 @@
 #include "../include/string_buffer.h"
 #include "../include/styles.h"
 #include "../include/stylestack.h"
+#include <stdlib.h>
+#include <string.h>
 
 void __sv_char(StringBuffer *sb, const char *string, int64_t *i, int64_t len, StyleStack *stack, int is_newline, int *in_code_block) {
     while (*i < len) {
@@ -159,6 +161,11 @@ __attribute__((visibility("default"))) const char *get_terminal_markdown_string(
     }
 
     char *result = string_buffer_to_string(sb);
+    string_buffer_free(sb);
 
     return result;
+}
+
+__attribute__((visibility("default"))) void free_rendered_string(const char *str) {
+    free((void *)str);
 }
