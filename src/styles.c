@@ -1,7 +1,4 @@
-#ifndef STYLES_H
-#define STYLES_H
-
-// ANSI Codes
+#include "styles.h"
 
 char bold[] = "\033[1m";
 char reset_bold[] = "\033[22m";
@@ -33,6 +30,3 @@ char reset_header3[] = "\033[0m";
 char code_block[] = "\033[48;5;240m\033[30m";
 char reset_code_block[] = "\033[0m";
 
-
-
-#endif // STYLES_H

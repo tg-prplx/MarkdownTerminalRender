@@ -1,14 +1,6 @@
-#ifndef STRING_BUFFER_H
-#define STRING_BUFFER_H
-#include <stdio.h>
+#include "string_buffer.h"
 #include <stdlib.h>
 #include <string.h>
-
-typedef struct {
-    char *data;
-    size_t size;
-    size_t capacity;
-} StringBuffer;
 
 StringBuffer *string_buffer_create(size_t initial_capacity) {
     StringBuffer *sb = malloc(sizeof(StringBuffer));
@@ -19,9 +11,9 @@ StringBuffer *string_buffer_create(size_t initial_capacity) {
     return sb;
 }
 
-void string_buffer_grow(StringBuffer *sb, size_t min_capacity) {
+static void string_buffer_grow(StringBuffer *sb, size_t min_capacity) {
     while (sb->capacity < min_capacity) {
-        sb->capacity *= 1.5;
+        sb->capacity = (size_t)(sb->capacity * 1.5);
     }
     sb->data = realloc(sb->data, sb->capacity);
 }
@@ -52,10 +44,8 @@ size_t string_buffer_length(StringBuffer *sb) {
     return sb->size;
 }
 
-
 void string_buffer_free(StringBuffer *sb) {
     free(sb->data);
     free(sb);
 }
 
-#endif // STRING_BUFFER_H
