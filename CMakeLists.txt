@@ -2,13 +2,15 @@ cmake_minimum_required(VERSION 3.16)
 
 project(MDTerminalRenderer LANGUAGES C)
 
-add_executable(MDTerminalRenderer main.c
-    mdrender.h
-    string_buffer.h
-    styles.h
-    stylestack.h
-    mdrender.h
+add_executable(MDTerminalRenderer
+    src/main.c
+    src/mdrender.c
+    src/string_buffer.c
+    src/stylestack.c
+    src/styles.c
 )
+
+target_include_directories(MDTerminalRenderer PRIVATE include)
 
 include(GNUInstallDirs)
 install(TARGETS MDTerminalRenderer

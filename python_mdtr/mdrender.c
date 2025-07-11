@@ -1,6 +1,6 @@
-#include "string_buffer.h"
-#include "styles.h"
-#include "stylestack.h"
+#include "../include/string_buffer.h"
+#include "../include/styles.h"
+#include "../include/stylestack.h"
 
 void __sv_char(StringBuffer *sb, const char *string, int64_t *i, int64_t len, StyleStack *stack, int is_newline, int *in_code_block) {
     while (*i < len) {

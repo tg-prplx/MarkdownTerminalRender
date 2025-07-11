@@ -1,11 +1,10 @@
-#ifndef MDRENDER_H
-#define MDRENDER_H
-#define _CRT_SECURE_NO_WARNINGS
+#include <string.h>
+#include <stdint.h>
 #include "string_buffer.h"
 #include "styles.h"
 #include "stylestack.h"
 
-void __sv_char(StringBuffer *sb, const char *string, int64_t *i, int64_t len, StyleStack *stack, int is_newline, int *in_code_block) {
+static void sv_char(StringBuffer *sb, const char *string, int64_t *i, int64_t len, StyleStack *stack, int is_newline, int *in_code_block) {
     while (*i < len) {
         char ch = string[*i];
         (*i)++;
@@ -65,7 +64,7 @@ void __sv_char(StringBuffer *sb, const char *string, int64_t *i, int64_t len, St
                     string_buffer_append_string(sb, pop_style(stack));
                 }
                 string_buffer_append_char(sb, ch);
-                __sv_char(sb, string, i, len, stack, 1, in_code_block);
+                sv_char(sb, string, i, len, stack, 1, in_code_block);
                 return;
 
             case '*':
@@ -144,14 +143,14 @@ void __sv_char(StringBuffer *sb, const char *string, int64_t *i, int64_t len, St
 }
 
 const char *get_terminal_markdown_string(const char *string) {
-    int64_t len = strlen(string);
-    StringBuffer *sb = string_buffer_create(len);
+    int64_t len = (int64_t)strlen(string);
+    StringBuffer *sb = string_buffer_create((size_t)len);
 
     StyleStack stack = { .top = 0 };
     int64_t i = 0;
     int in_code_block = 0;
 
-    __sv_char(sb, string, &i, len, &stack, 1, &in_code_block);
+    sv_char(sb, string, &i, len, &stack, 1, &in_code_block);
 
     while (stack.top > 0) {
         string_buffer_append_string(sb, pop_style(&stack));
@@ -163,6 +162,3 @@ const char *get_terminal_markdown_string(const char *string) {
     return result;
 }
 
-
-
-#endif // MDRENDER_H

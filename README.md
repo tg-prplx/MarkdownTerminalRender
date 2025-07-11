@@ -35,7 +35,9 @@ int main() {
 ```sh
 git clone https://github.com/username/mdrender.git
 cd mdrender
-make && sudo make install
+cmake -S . -B build
+cmake --build build
+sudo cmake --install build
 ```
 
 ## 📜 License
