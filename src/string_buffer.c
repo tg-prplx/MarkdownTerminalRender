@@ -3,17 +3,24 @@
 #include <string.h>
 
 StringBuffer *string_buffer_create(size_t initial_capacity) {
+    size_t capacity = initial_capacity + 1; // space for null-terminator
+    if (capacity == 0) {
+        capacity = 1;
+    }
     StringBuffer *sb = malloc(sizeof(StringBuffer));
-    sb->data = malloc(initial_capacity);
+    sb->data = malloc(capacity);
     sb->data[0] = '\0';
     sb->size = 0;
-    sb->capacity = initial_capacity;
+    sb->capacity = capacity;
     return sb;
 }
 
 static void string_buffer_grow(StringBuffer *sb, size_t min_capacity) {
+    if (sb->capacity == 0) {
+        sb->capacity = 1;
+    }
     while (sb->capacity < min_capacity) {
-        sb->capacity = (size_t)(sb->capacity * 1.5);
+        sb->capacity = (size_t)(sb->capacity * 2);
     }
     sb->data = realloc(sb->data, sb->capacity);
 }
